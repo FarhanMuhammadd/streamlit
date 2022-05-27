@@ -49,8 +49,10 @@ df = pd.DataFrame(results['values'][1:] , columns = results['values'][0])
 st.sidebar.header('Please Filter Here:')
 state = st.sidebar.multiselect("Select the state", options = df['State'].unique(),default = df['State'].unique())
 
-df_selection = df.query("State == @state")
 
+df_selection = df.query("State == @state")
+st.header('DataFrame:')
+st.dataframe(df_selection)
 
 
 
@@ -59,10 +61,6 @@ st.header('KPIs:')
 total_compalints = pd.to_numeric(df_selection['Complaint_id']).sum()
 total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'Closed with explanation', 'Complaint_id']).sum()
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
-
-with st.container():
-     st.Title('DataFrame:')
-     st.dataframe(df_selection)
             
 with st.container():
     col2 , col3 ,col4= st.columns(3)
