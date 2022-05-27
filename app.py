@@ -53,14 +53,18 @@ df_selection = df.query("State == @state")
 
 
 
-st.dataframe(df_selection)
+
 
 st.header('KPIs:')
 total_compalints = pd.to_numeric(df_selection['Complaint_id']).sum()
 total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'Closed with explanation', 'Complaint_id']).sum()
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
 
-
+with st.container():
+    col4 = st.columns(1)
+    with col4:
+        st.Title('DataFrame:')
+        st.dataframe(df_selection)
 with st.container():
     col1 , col2 ,col3= st.columns(3)
     with col1:
@@ -75,11 +79,7 @@ with st.container():
         st.text('Complaints In Progress Status')
         st.text(total_complaints_with_in_progress)
 
-with st.container():
-    col4 ,col5 = st.columns(2)
-    with col4:
-        st.text('')
-        st.dataframe(df_selection)
+
 
     
     
