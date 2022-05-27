@@ -79,7 +79,7 @@ with st.container():
 
 with st.container():
     col1 , col5 = st.columns(2)
-    woth col1:
+    with col1:
         st.line_chart(df_selection)
     
     
