@@ -61,7 +61,8 @@ st.header('KPIs:')
 total_compalints = pd.to_numeric(df_selection['Complaint_id']).sum()
 total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'Closed with explanation', 'Complaint_id']).sum()
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
-            
+df_selection['Complaint_id'] = pd.to_numeric(df_selection['Complaint_id'])
+dd = df_selection.groupby('Product')['Complaint_id'].sum()         
 with st.container():
     col2 , col3 ,col4= st.columns(3)
     with col2:
@@ -78,7 +79,7 @@ with st.container():
 
 
 with st.container():
-    st.bar_chart(df_selection.groupby('Product')['Complaint_id'])
+    st.bar_chart(dd)
     
     
     
