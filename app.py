@@ -78,7 +78,7 @@ with st.container():
 
 
 with st.container():
-    col1 , col5 = st.columns(2)
+    col1 , col5 = st.columns(4:1)
     with col1:
         st.line_chart(df_selection)
     
