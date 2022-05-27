@@ -1,5 +1,5 @@
 --upgrade pip
 protobuf~=3.19.0
 typing_extensions
-google.oauth2
+google-auth
 google-api-python-client
