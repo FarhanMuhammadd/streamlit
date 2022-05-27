@@ -78,7 +78,7 @@ with st.container():
 
 
 with st.container():
-    st.line_chart(df_selection)
+    st.bar_chart(df_selection[:5])
     
     
     
