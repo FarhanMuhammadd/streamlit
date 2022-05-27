@@ -3,7 +3,7 @@ import pandas as pd
 from googleapiclient.discovery import build
 import json
 from google.oauth2 import service_account
-
+import plotly.express as px 
 
 
 st.set_page_config(page_title="Dashboard", page_icon=":bar_chart:", layout="wide")
@@ -63,7 +63,9 @@ total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selectio
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
 df_selection['Complaint_id'] = pd.to_numeric(df_selection['Complaint_id'])
 dd = df_selection.groupby('Product')['Complaint_id'].sum()    
-dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()    
+dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()   
+dd2 = df_selection.groupby('Submitted_via')['Complaint_id'].sum()  
+fig = px.pie(dd2 , value = 'Complaint_id' , names = 'Submitted_via')
 with st.container():
     col2 , col3 ,col4= st.columns(3)
     with col2:
@@ -87,7 +89,16 @@ with st.container():
     with col5:
         st.text('Complaints by Date')
         st.line_chart(dd1)
-    
+            
+            
+with st.container():
+    col6,col7 = st.columns(2)
+    with col1:
+        st.text('Complaints Submitted Via')
+        st.write(dd2)
+    with col5:
+        st.text('Complaints by Date')
+        st.line_chart(dd1) 
     
     
     
