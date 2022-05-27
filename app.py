@@ -63,7 +63,7 @@ total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selectio
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
 df_selection['Complaint_id'] = pd.to_numeric(df_selection['Complaint_id'])
 dd = df_selection.groupby('Product')['Complaint_id'].sum()    
-dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()   
+dd1 = df_selection.groupby('Month_year')['Complaint_id'].sum()   
 dd2 = df_selection.groupby('Submitted_via')['Complaint_id'].sum()  
 fig = px.pie(dd2 , values = dd2.values , names = dd2.index)
 dd3 = df_selection.groupby(['Issue' ,'Sub_issue' ])['Complaint_id'].sum()
