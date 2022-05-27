@@ -65,7 +65,7 @@ df_selection['Complaint_id'] = pd.to_numeric(df_selection['Complaint_id'])
 dd = df_selection.groupby('Product')['Complaint_id'].sum()    
 dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()   
 dd2 = df_selection.groupby('Submitted_via')['Complaint_id'].sum()  
-fig = px.pie(dd2 , values = 'Complaint_id' , names = 'Submitted_via')
+fig = px.pie(dd2 , values = dd2.values , names =dd2.names)
 with st.container():
     col2 , col3 ,col4= st.columns(3)
     with col2:
