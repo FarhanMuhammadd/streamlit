@@ -78,7 +78,7 @@ with st.container():
 
 
 with st.container():
-    st.bar_chart(df_selection[:5])
+    st.bar_chart(df_selection.groupby('Product')['Complaint_id'])
     
     
     
