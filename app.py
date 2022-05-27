@@ -61,21 +61,22 @@ total_complaints_with_closed_status = pd.to_numeric(df_selection.loc[df_selectio
 total_complaints_with_in_progress = pd.to_numeric(df_selection.loc[df_selection['Company_Response'] == 'In progress', 'Complaint_id']).sum()
 
 with st.container():
-    col4 = st.columns(1)
-    with col4:
+    col1 = st.columns(1)
+    with col1:
         st.Title('DataFrame:')
         st.dataframe(df_selection)
+            
 with st.container():
-    col1 , col2 ,col3= st.columns(3)
-    with col1:
+    col2 , col3 ,col4= st.columns(3)
+    with col2:
         st.text('Total Complaints')
         st.text(total_compalints)
     
-    with col2:
+    with col3:
         st.text('Complaints Closed Status')
         st.text(total_complaints_with_closed_status)
     
-    with col3:
+    with col4:
         st.text('Complaints In Progress Status')
         st.text(total_complaints_with_in_progress)
 
