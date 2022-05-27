@@ -77,7 +77,10 @@ with st.container():
         st.text(total_complaints_with_in_progress)
 
 
-
+with st.container():
+    col1 , col5 = st.columns(2)
+    woth col1:
+        st.line_chart(df_selection)
     
     
     
