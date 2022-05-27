@@ -92,14 +92,9 @@ with st.container():
             
             
 with st.container():
-    col6,col7 = st.columns(2)
-    with col6:
-        st.text('Complaints Submitted Via')
-        st.plotly_chart(fig)
-    with col7:
-        st.text('Complaints by Date')
-        st.line_chart(dd1) 
-    
+    st.text('Complaints Submitted Via')
+    st.plotly_chart(fig)
+  
     
     
             
