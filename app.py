@@ -47,7 +47,7 @@ df = pd.DataFrame(results['values'][1:] , columns = results['values'][0])
 
 
 st.sidebar.header('Please Filter Here:')
-state = st.sidebar.multiselect("Select the state", options = df['State'].unique(),default = df['State'].unique())
+state = st.sidebar.multiselect("Select the state", options = df['State'].unique(),default = df['State'].unique()[:10])
 
 
 df_selection = df.query("State == @state")
