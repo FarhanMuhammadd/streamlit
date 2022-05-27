@@ -66,13 +66,13 @@ dd = df_selection.groupby('Product')['Complaint_id'].sum()
 dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()   
 dd2 = df_selection.groupby('Submitted_via')['Complaint_id'].sum()  
 fig = px.pie(dd2 , values = dd2.values , names = dd2.index)
-dd3 = df.groupby(['Issue' ,'Sub_issue' ])['Complaint_id'].sum()
+dd3 = df_selection.groupby(['Issue' ,'Sub_issue' ])['Complaint_id'].sum()
 index = []
 index1 = []
 for ind in dd3.index:
     index.append(ind[0])
     index1.append(ind[1])
-fig1 = px.treemap(dd3 , path = [index , index1] , values = dd3.values)
+fig1 = px.treemap(df_selection , path = [index , index1] , values = dd3.values)
 
 with st.container():
     col2 , col3 ,col4= st.columns(3)
