@@ -79,7 +79,10 @@ with st.container():
 
 
 with st.container():
-    st.bar_chart(dd)
+    col1,col5 = st.columns(2)
+    with col1:
+        st.text('Complaints by Product')
+        st.bar_chart(dd)
     
     
     
