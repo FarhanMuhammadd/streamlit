@@ -65,6 +65,7 @@ df_selection['Complaint_id'] = pd.to_numeric(df_selection['Complaint_id'])
 dd = df_selection.groupby('Product')['Complaint_id'].sum()    
 dd1 = df_selection.groupby('Date_received')['Complaint_id'].sum()   
 dd2 = df_selection.groupby('Submitted_via')['Complaint_id'].sum()  
+fig = px.pie(dd2)
 with st.container():
     col2 , col3 ,col4= st.columns(3)
     with col2:
@@ -94,7 +95,7 @@ with st.container():
     col6,col7 = st.columns(2)
     with col1:
         st.text('Complaints Submitted Via')
-        st.write(dd2.plot(kind='pie'))
+        st.plotly_chart(fig)
     with col5:
         st.text('Complaints by Date')
         st.line_chart(dd1) 
