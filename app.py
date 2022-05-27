@@ -93,7 +93,7 @@ with st.container():
     col1,col5 = st.columns(2)
     with col1:
         st.text('Complaints by Product')
-        st.bar_chart(dd)
+        st.bar_chart(dd , use_container_width=True)
     with col5:
         st.text('Complaints by Date')
         st.line_chart(dd1)
